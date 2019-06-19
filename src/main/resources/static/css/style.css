@@ -1,0 +1,33 @@
+@charset "UTF-8";
+header {
+	text-align: center;
+	background-color: #6ccd55;
+}
+
+#lastActivity, #applicants, #positions {
+	margin: auto;
+	width: 50%;
+}
+
+#lastActivity h2,
+#applicants h3,
+#positions h3 {
+	text-align: center;
+}
+
+#lastActivity div,
+#applicants div,
+#positions div {
+	text-align: center;
+}
+
+a:link, a:visited {
+	font-family: sans-serif;
+	font-weight: bold;
+	background-color: #ef2929;
+	color: white;
+	padding: 14px 24px;
+	text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}

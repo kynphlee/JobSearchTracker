@@ -1,0 +1,51 @@
+@charset "UTF-8";
+#applicantInfo {
+	margin: auto;
+	width: 50%;
+}
+
+.applicant-section {
+	background-color: #fcaf3e;
+}
+
+#zip {
+	position: relative;
+	top: 22px;
+	left: 22px;
+}
+
+#address {
+	position: relative;
+	top: 20px;
+	left: 38px;
+}
+
+
+
+div#lastName {
+	position: relative;
+	left: 3px;
+}
+
+#applicantSkills {
+	margin: auto;
+	width: 35%;
+	position: relative;
+	top: 60px;
+}
+
+#applicantSkills h2{
+	text-align: center;
+}
+
+#submit {
+	margin: auto;
+	width: 25%;
+	position: relative;
+	top: 80px;
+}
+
+#address2 {
+	position: relative;
+	left: 54px;
+}

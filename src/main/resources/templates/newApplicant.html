@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Job Search Tracker v1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/newApplicant.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+			integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			crossorigin="anonymous"></script>
+	<script src="js/newApplicant.js"></script>
+</head>
+<body>
+	<header>
+		<h1>New Applicant</h1>
+	</header>
+
+	<form action="#" th:action="@{/newApplicant}" th:object="${newApplicant}" th:method=POST>
+		<div id="applicantInfo" class="applicant-section">
+			<div id="firstNameAndExperience">
+				<label for="firstName">First Name</label>
+				<input id="firstName" type="text" th:field="*{firstName}">
+				<label for="experience">Years of Experience</label>
+				<input id="experience" type="number" th:field="*{yearsOfExperience}">
+			</div>
+			<div id="lastName">
+				<label for="lastName">Last Name</label>
+				<input id="lastName" type="text" th:field="*{lastName}">
+			</div>
+			
+			<div id="address">
+				<div>
+					<label for="address1">Street</label>
+					<input id="address1" type="text" th:field="*{address.address1}">
+					<label for="city">City</label>
+					<input id="city" type="text" th:field="*{address.city}">
+				</div>
+				<div>
+					<input id="address2" type="text" th:field="*{address.address2}">
+					<span style="position: relative;left: 50px;">
+						<label for="state">State</label>
+						<input id="state" type="text" th:field="*{address.state}">
+					</span>
+				</div>
+				<div id="zip">
+					<label for="zipcode">Zip</label>
+					<input id="zipcode" type="text" th:field="*{address.zip}">
+				</div>
+			</div>
+		</div>
+		
+		<div id="applicantSkills" class="applicant-section">
+			<h2>Skills</h2>
+			<table>
+				<thead>
+					<tr>
+						<td>Skill</td>
+						<td>Years Experience</td>
+						<td><input id="addSkill" type="submit" name="addRow" value="Add Skill"></td>
+					</tr>
+				</thead>
+				<tbody id="skillset" th:each="skill,skillStat: *{skills}">
+					<tr>
+						<td><input id="skill" type="text" th:field="*{skills[__${skillStat.index}__].skill}"></td>
+						<td><input id="yearsExp" type="text" th:field="*{skills[__${skillStat.index}__].yearsOfExperience}"></td>
+						<td><input id="removeSkill" type="submit" name="removeRow" value="Remove Skill"></td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+		<div id="submit">
+			<input type="submit" value="Submit">
+		</div>
+	</form>
+</body>
+</html>
