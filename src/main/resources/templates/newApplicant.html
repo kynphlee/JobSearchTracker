@@ -51,19 +51,19 @@
 		
 		<div id="applicantSkills" class="applicant-section">
 			<h2>Skills</h2>
-			<table>
+			<table id="skillsTable">
 				<thead>
 					<tr>
 						<td>Skill</td>
 						<td>Years Experience</td>
-						<td><input id="addSkill" type="submit" name="addRow" value="Add Skill"></td>
+						<td><input id="addSkill" type="button" name="addRow" value="Add Skill"></td>
 					</tr>
 				</thead>
-				<tbody id="skillset" th:each="skill,skillStat: *{skills}">
-					<tr>
+				<tbody id="allSkills">
+					<tr id="skillset" th:each="skill,skillStat: *{skills}">
 						<td><input id="skill" type="text" th:field="*{skills[__${skillStat.index}__].skill}"></td>
 						<td><input id="yearsExp" type="text" th:field="*{skills[__${skillStat.index}__].yearsOfExperience}"></td>
-						<td><input id="removeSkill" type="submit" name="removeRow" value="Remove Skill"></td>
+						<td><input id="removeSkill" type="button" name="removeRow" value="Remove Skill"></td>
 					</tr>
 				</tbody>
 			</table>

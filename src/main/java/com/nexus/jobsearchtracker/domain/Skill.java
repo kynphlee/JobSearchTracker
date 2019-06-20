@@ -3,6 +3,10 @@ package com.nexus.jobsearchtracker.domain;
 import java.io.Serializable;
 
 public class Skill implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String skill;
 	private String yearsOfExperience;
 	

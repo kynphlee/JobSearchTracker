@@ -1,8 +1,6 @@
 package com.nexus.jobsearchtracker.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;

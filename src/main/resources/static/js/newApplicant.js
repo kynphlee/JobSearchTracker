@@ -1,8 +1,20 @@
 $(document).ready(function(){
 	$("#addSkill").click(function(){
-		let skillExp = "<td><input id=\"skill\" type=\"text\" th:field=\"*{skills[__${skillStat.index}__].skill}\"></td>" +
-				"<td><input id=\"yearsExp\" type=\"text\" th:field=\"*{skills[__${skillStat.index}__].yearsOfExperience}\"></td>";
+		let rowIndex = document.getElementById('skillsTable').getElementsByTagName('tr').length - 1;
+		
+		let createInput = function(id, rowIndex, fieldName) {
+			let input = document.createElement('input');
+			input.id = id;
+			input.type = 'text';
+			input.setAttribute('name', 'skills[' + rowIndex + '].' + fieldName);
+			return input
+		};
+		
+		let skillExp = "<td>" + createInput('skill', rowIndex, 'skill').outerHTML + "</td>" +
+		"<td>" + createInput('yearsExp', rowIndex, 'yearsOfExperience').outerHTML + "</td>" +
+		"<td><input id=\"removeSkill\" type=\"button\" name=\"removeRow\" value=\"Remove Skill\"></td>";
+		
 		let row = $("<tr></tr>").html(skillExp);
-		$("#skillset").append(row);
+		$("#allSkills").append(row);
 	});
 });
