@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Job Search Tracker v1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/newPosition.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous" type="text/javascript"></script>
+	<script src="js/newApplicant.js" type="text/javascript"></script>
+</head>
+<body>
+	<header>
+		<h1>New Position</h1>
+	</header>
+	
+	<form action="#" th:action="@{/newPosition}" th:object="${newPosition}" th:method="POST">
+		<div id="position">
+			<div id="info">
+				<div>
+					<label for="title">Position Title</label>
+					<input id="title" type="text"/>
+					<label for="dateApplied">Date Applied</label>
+					<input id="dateApplied" type="text"/>
+				</div>
+				<div>
+					<label for="companyName">Company Name</label>
+					<input id="companyName" type="text"/>
+					<label for="duration">Duration</label>
+					<input id="duration" type="text"/>
+				</div>
+				<div id="address">
+					<div>
+						<label for="address1">Street</label>
+						<input id="address1" type="text" />
+						<label for="city">City</label>
+						<input id="city" type="text" />
+					</div>
+					<div>
+						<input id="address2" type="text" />
+						<span style="position: relative; left: 50px;">
+							<label for="state">State</label>
+							<input id="state" type="text" />
+						</span>
+					</div>
+					<div id="zip">
+						<label for="zipcode">Zip</label>
+						<input id="zipcode" type="text" />
+					</div>
+				</div>
+			</div>
+			<div id="responsibilities">
+				<h2>Responsibilities</h2>
+			</div>
+			<div id="qualifications">
+				<h2>Qualifications</h2>
+			</div>
+			<div id="preferred">
+				<h2>Preferred Qualifications</h2>
+			</div>
+			<div id="perksBenefits">
+				<h2>Perks & Benefits</h2>
+			</div>
+		</div>
+		<div id="submit">
+			<input type="submit" value="Submit"/>
+		</div>
+	</form>
+</body>
+</html>

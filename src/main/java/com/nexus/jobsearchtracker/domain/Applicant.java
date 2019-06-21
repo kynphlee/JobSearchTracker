@@ -18,11 +18,11 @@ public class Applicant {
 	@GeneratedValue
 	private Long id;
 	
-//	@NotNull
+	@NotNull
 	@Size(max = 40)
 	private String firstName;
 	
-//	@NotNull
+	@NotNull
 	@Size(max = 40)
 	private String lastName;
 	

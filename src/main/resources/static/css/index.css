@@ -1,0 +1,17 @@
+@charset "UTF-8";
+#lastActivity, #applicants, #positions {
+	margin: auto;
+	width: 50%;
+}
+
+#lastActivity h2,
+#applicants h3,
+#positions h3 {
+	text-align: center;
+}
+
+#lastActivity div,
+#applicants div,
+#positions div {
+	text-align: center;
+}

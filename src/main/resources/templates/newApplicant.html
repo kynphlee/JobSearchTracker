@@ -7,16 +7,16 @@
 	<link rel="stylesheet" href="css/newApplicant.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.js"
 			integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-			crossorigin="anonymous"></script>
-	<script src="js/newApplicant.js"></script>
+			crossorigin="anonymous" type="text/javascript"></script>
+	<script src="js/newApplicant.js" type="text/javascript"></script>
 </head>
 <body>
 	<header>
 		<h1>New Applicant</h1>
 	</header>
 
-	<form action="#" th:action="@{/newApplicant}" th:object="${newApplicant}" th:method=POST>
-		<div id="applicantInfo" class="applicant-section">
+	<form action="#" th:action="@{/newApplicant}" th:object="${newApplicant}" th:method="POST">
+		<section id="applicantInfo" class="applicant-section">
 			<div id="firstNameAndExperience">
 				<label for="firstName">First Name</label>
 				<input id="firstName" type="text" th:field="*{firstName}">
@@ -37,7 +37,7 @@
 				</div>
 				<div>
 					<input id="address2" type="text" th:field="*{address.address2}">
-					<span style="position: relative;left: 50px;">
+					<span style="position: relative; left: 50px;">
 						<label for="state">State</label>
 						<input id="state" type="text" th:field="*{address.state}">
 					</span>
@@ -47,9 +47,9 @@
 					<input id="zipcode" type="text" th:field="*{address.zip}">
 				</div>
 			</div>
-		</div>
+		</section>
 		
-		<div id="applicantSkills" class="applicant-section">
+		<section id="applicantSkills" class="applicant-section">
 			<h2>Skills</h2>
 			<table id="skillsTable">
 				<thead>
@@ -68,7 +68,7 @@
 				</tbody>
 			</table>
 			
-		</div>
+		</section>
 		<div id="submit">
 			<input type="submit" value="Submit">
 		</div>

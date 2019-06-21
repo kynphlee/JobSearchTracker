@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexus.jobsearchtracker.dao.ApplicantRepository;
 import com.nexus.jobsearchtracker.domain.Applicant;
+import com.nexus.jobsearchtracker.domain.Position;
 import com.nexus.jobsearchtracker.domain.Skill;
 
 @Controller
@@ -24,20 +25,6 @@ public class MainController {
 	
 	@Autowired
 	private ApplicantRepository applicantRepository;
-	
-	@RequestMapping(path = "/newApplicant", params={"addSkill"})
-	public String addSkill(final Applicant applicant, BindingResult result) {
-		applicant.getSkills().add(new Skill());
-		return "redirect:/newApplicant";
-	}
-	
-	@RequestMapping(path="/newApplicant", params= {"removeSkill"})
-	public String removeSkill(final Applicant applicant, final BindingResult result,
-			final HttpServletRequest req) {
-		final Integer rowId = Integer.valueOf(req.getParameter("removeRow"));
-		applicant.getSkills().remove(rowId.intValue());
-	    return "redirect:/newApplicant";
-	}
 	
 	@GetMapping("/")
 	public String main(Model model) {
@@ -66,5 +53,12 @@ public class MainController {
 		
 		log.info(String.format("Applicant \"%s %s\" has been saved.%n", a.getFirstName(), a.getLastName()));
 		return "redirect:/";
+	}
+	
+	@GetMapping("/newPosition")
+	public String newPosition(Model model) {
+		Position position = new Position();
+		model.addAttribute("newPosition", position);
+		return "newPosition";
 	}
 }
