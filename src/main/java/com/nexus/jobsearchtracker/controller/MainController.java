@@ -1,6 +1,6 @@
 package com.nexus.jobsearchtracker.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,9 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexus.jobsearchtracker.dao.ApplicantRepository;
+import com.nexus.jobsearchtracker.dao.PositionRepository;
+import com.nexus.jobsearchtracker.dao.SkillsRepository;
 import com.nexus.jobsearchtracker.domain.Applicant;
 import com.nexus.jobsearchtracker.domain.Position;
 import com.nexus.jobsearchtracker.domain.Skill;
@@ -25,6 +26,12 @@ public class MainController {
 	
 	@Autowired
 	private ApplicantRepository applicantRepository;
+	
+	@Autowired
+	private PositionRepository positionRepository;
+	
+	@Autowired
+	private SkillsRepository skillRepository;
 	
 	@GetMapping("/")
 	public String main(Model model) {
@@ -49,9 +56,15 @@ public class MainController {
 		if (result.hasErrors())
 			System.out.println("An error in submission has occurred.");
 		
+		List<Skill> skillSet = newApplicant.getSkills();
 		Applicant a = applicantRepository.save(newApplicant);
-		
 		log.info(String.format("Applicant \"%s %s\" has been saved.%n", a.getFirstName(), a.getLastName()));
+		
+		for(Skill skill: skillSet) {
+			skillRepository.save(skill);
+			log.info(String.format("Skill \"%s %s\" for applicant \"%s %s\" has been saved.%n"
+					, skill.getSkill(), a.getFirstName(), a.getLastName()));
+		}
 		return "redirect:/";
 	}
 	
@@ -60,5 +73,18 @@ public class MainController {
 		Position position = new Position();
 		model.addAttribute("newPosition", position);
 		return "newPosition";
+	}
+	
+	@PostMapping("/newPosition")
+	public String addPosition(
+			@ModelAttribute("newPosition") Position newPosition,
+			BindingResult result) {
+		if (result.hasErrors())
+			System.out.println("An error in submission has occurred.");
+		
+		Position p = positionRepository.save(newPosition);
+		
+		log.info(String.format("Position \"%s\" has been saved.%n", p.getPositionTitle()));
+		return "redirect:/";
 	}
 }

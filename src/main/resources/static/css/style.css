@@ -4,6 +4,10 @@ header {
 	background-color: #6ccd55;
 }
 
+body {
+	background-color: #dee2ad;	
+}
+
 a:link, a:visited {
 	font-family: sans-serif;
 	font-weight: bold;

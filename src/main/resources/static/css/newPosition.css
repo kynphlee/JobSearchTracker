@@ -5,3 +5,19 @@
 	margin: auto;
 	width: 50%;
 }
+
+.positionSection {
+	margin: auto;
+	width: 50%;
+}
+
+section > h3 {
+	text-align: center;
+}
+
+#submit {
+	margin: auto;
+	width: 5%;
+	position: relative;
+	top: 30px;
+}

@@ -17,51 +17,54 @@
 	
 	<form action="#" th:action="@{/newPosition}" th:object="${newPosition}" th:method="POST">
 		<div id="position">
-			<div id="info">
+			<section id="info" class="positionInfo">
 				<div>
 					<label for="title">Position Title</label>
-					<input id="title" type="text"/>
+					<input id="title" type="text" th:field="*{positionTitle}"/>
 					<label for="dateApplied">Date Applied</label>
-					<input id="dateApplied" type="text"/>
+					<input id="dateApplied" type="text" th:field="*{dateApplied}"/>
 				</div>
 				<div>
 					<label for="companyName">Company Name</label>
-					<input id="companyName" type="text"/>
+					<input id="companyName" type="text" th:field="*{companyName}"/>
 					<label for="duration">Duration</label>
-					<input id="duration" type="text"/>
+					<input id="duration" type="text" th:field="*{duration}"/>
 				</div>
 				<div id="address">
 					<div>
 						<label for="address1">Street</label>
-						<input id="address1" type="text" />
+						<input id="address1" type="text" th:field="*{address.address1}"/>
 						<label for="city">City</label>
-						<input id="city" type="text" />
+						<input id="city" type="text" th:field="*{address.city}"/>
 					</div>
 					<div>
-						<input id="address2" type="text" />
-						<span style="position: relative; left: 50px;">
-							<label for="state">State</label>
-							<input id="state" type="text" />
-						</span>
+						<input id="address2" type="text" th:field="*{address.address2}"/>
+						<label for="state">State</label>
+						<input id="state" type="text" th:field="*{address.state}"/>
 					</div>
 					<div id="zip">
 						<label for="zipcode">Zip</label>
-						<input id="zipcode" type="text" />
+						<input id="zipcode" type="text" th:field="*{address.zip}"/>
 					</div>
 				</div>
-			</div>
-			<div id="responsibilities">
-				<h2>Responsibilities</h2>
-			</div>
-			<div id="qualifications">
-				<h2>Qualifications</h2>
-			</div>
-			<div id="preferred">
-				<h2>Preferred Qualifications</h2>
-			</div>
-			<div id="perksBenefits">
-				<h2>Perks & Benefits</h2>
-			</div>
+			</section>
+			
+			<section id="responsibilities" class="positionSection">
+				<h3>Responsibilities</h3>
+				<textarea rows="6" cols="103" th:field="*{responsibilities}"></textarea>
+			</section>
+			<section id="qualifications" class="positionSection">
+				<h3>Qualifications</h3>
+				<textarea rows="6" cols="103" th:field="*{qualifications}"></textarea>
+			</section>
+			<section id="preferred" class="positionSection">
+				<h3>Preferred Qualifications</h3>
+				<textarea rows="6" cols="103" th:field="*{preferredQualifications}"></textarea>
+			</section>
+			<section id="perksBenefits" class="positionSection">
+				<h3>Perks & Benefits</h3>
+				<textarea rows="6" cols="103" th:field="*{perksBenefits}"></textarea>
+			</section>
 		</div>
 		<div id="submit">
 			<input type="submit" value="Submit"/>
