@@ -1,7 +1,6 @@
 package com.nexus.jobsearchtracker.domain;
 
-import java.util.ArrayList;
-
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,50 +15,33 @@ public class Applicant {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="id")
 	private Long id;
 	
 	@NotNull
 	@Size(max = 40)
+	@Column(name="first_name")
 	private String firstName;
 	
 	@NotNull
 	@Size(max = 40)
+	@Column(name="last_name")
 	private String lastName;
 	
+	@Column(name="experience")
 	private Integer yearsOfExperience;
 	
 	@Embedded
 	private Address address;
 	
-	private ArrayList<Skill> skills = new ArrayList<>();
-	
 	public Applicant() {}
 
-	public Applicant(Long id, @NotNull @Size(max = 40) String firstName, @NotNull @Size(max = 40) String lastName,
-			Integer yearsOfExperience, Address address, ArrayList<Skill> skills) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.yearsOfExperience = yearsOfExperience;
-		this.address = address;
-		this.skills = skills;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public Applicant(@NotNull @Size(max = 40) String firstName, @NotNull @Size(max = 40) String lastName,
+		Integer yearsOfExperience, Address address) {
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.yearsOfExperience = yearsOfExperience;
+	this.address = address;
 	}
 
 	public String getFirstName() {
@@ -86,23 +68,18 @@ public class Applicant {
 		this.yearsOfExperience = yearsOfExperience;
 	}
 
-	public ArrayList<Skill> getSkills() {
-		return skills;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setSkills(ArrayList<Skill> skills) {
-		this.skills = skills;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder skillSet = new StringBuilder();
-		for(Skill skill: skills) {
-			skillSet.append(String.format("%s: %d,", skill.getSkill(), skill.getYearsOfExperience()));
-		}
-		
 		return "Applicant [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", yearsOfExperience="
-				+ yearsOfExperience + ", address=" + address + ", skills=" + skillSet + "]";
+				+ yearsOfExperience + ", address=" + address + "]";
 	}
 	
 	

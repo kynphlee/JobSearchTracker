@@ -9,13 +9,8 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
-//import com.nexus.jobsearchtracker.dao.ApplicantRepository;
-
 @SpringBootApplication
-public class JobSearchTrackerApplication /*implements CommandLineRunner*/{
-
-//	@Autowired
-//	private ApplicantRepository applicantRepository;
+public class JobSearchTrackerApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(JobSearchTrackerApplication.class, args);
@@ -49,31 +44,4 @@ public class JobSearchTrackerApplication /*implements CommandLineRunner*/{
 	    viewResolver.setOrder(1);
 	    return viewResolver;
 	}
-
-//	@Override
-//	public void run(String... args) throws Exception {
-//		applicantRepository.deleteAllInBatch();
-//		
-//		Applicant newApplicant = new Applicant();
-//		newApplicant.setFirstName("Kendall");
-//		newApplicant.setLastName("Fleming");
-//		newApplicant.setYearsOfExperience(11);
-//		
-//		Address myAddress = new Address();
-//		myAddress.setAddress1("1419 Druid Valley Drive NE");
-//		myAddress.setAddress2("Apt. A");
-//		myAddress.setCity("Atlanta");
-//		myAddress.setState("Georgia");
-//		myAddress.setZip(30329);
-//		
-//		newApplicant.setAddress(myAddress);
-//		
-//		applicantRepository.save(newApplicant);
-//		
-//		Optional<Applicant> result = applicantRepository.findById(1L);
-//		
-//		if (result.isPresent())
-//			System.out.println(result.get());
-//	}
-
 }

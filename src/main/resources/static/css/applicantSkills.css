@@ -1,0 +1,10 @@
+@charset "UTF-8";
+#applicantSkills {
+	background-color: #fcaf3e;
+	margin: auto;
+	width: 42%;
+}
+
+section > h2, #skillsTable {
+	text-align: center;
+}

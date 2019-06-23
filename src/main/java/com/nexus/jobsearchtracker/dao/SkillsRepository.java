@@ -2,8 +2,8 @@ package com.nexus.jobsearchtracker.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.nexus.jobsearchtracker.domain.Skill;
+import com.nexus.jobsearchtracker.domain.SkillsList;
 
-public interface SkillsRepository extends JpaRepository<Skill, Long>{
+public interface SkillsRepository extends JpaRepository<SkillsList, Long>{
 
 }

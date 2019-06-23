@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Job Search Tracker v1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/applicantSkills.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"
+			integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			crossorigin="anonymous" type="text/javascript"></script>
+	<script src="js/applicantSkills.js" type="text/javascript"></script>
+</head>
+<body>
+	<header>
+		<h1>Applicant Skills</h1>
+	</header>
+	
+	<form action="#" th:action="@{/applicantSkills}" th:object="${applicantSkills}" th:method="POST">
+		<section id="applicantSkills" class="applicant-section">
+			<h2>Skills</h2>
+			<table id="skillsTable">
+				<thead>
+					<tr>
+						<td>Skill</td>
+						<td>Years Experience</td>
+						<td><input id="addSkill" type="button" name="addRow" value="Add Skill"></td>
+					</tr>
+				</thead>
+				<tbody id="allSkills">
+					<tr id="skillset" th:each="skill,skillStat: *{skillSet}">
+						<td><input id="skill" type="text" th:field="*{skillSet[__${skillStat.index}__].skill}"></td>
+						<td><input id="yearsExp" type="text" th:field="*{skillSet[__${skillStat.index}__].yearsOfExperience}"></td>
+						<td><input id="removeSkill" type="button" name="removeRow" value="Remove Skill"></td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</section>
+	</form>
+</body>
+</html>

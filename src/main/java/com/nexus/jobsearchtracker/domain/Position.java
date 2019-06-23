@@ -26,8 +26,10 @@ public class Position {
 	
 	public Position() {}
 
-	public Position(String positionTitle, String dateApplied, String companyName, String duration, Address address,
-			String responsibilities, String qualifications, String preferredQualifications, String perksBenefits) {
+	public Position(String positionTitle, String dateApplied, 
+			String companyName, String duration, Address address,
+			String responsibilities, String qualifications, 
+			String preferredQualifications, String perksBenefits) {
 		super();
 		this.positionTitle = positionTitle;
 		this.dateApplied = dateApplied;
