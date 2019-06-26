@@ -8,3 +8,10 @@
 section > h2, #skillsTable {
 	text-align: center;
 }
+
+#submit {
+	margin: auto;
+	width: 5%;
+	position: relative;
+	top: 80px;
+}

@@ -9,19 +9,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="skills")
+//@Entity
+//@Table(name="skills")
 public class SkillsList {
 
-	@Id
-	@GeneratedValue
+//	@Id
+//	@GeneratedValue
 	private Long id;
 	
-	@ElementCollection
-	private List<Skill> skillSet;
+//	@ElementCollection
+//	private ArrayList<Skill> skillSet;
 	
 	public SkillsList() {
-		skillSet = new ArrayList<>();
+//		skillSet = new ArrayList<>();
 	}
 
 	public Long getId() {
@@ -32,11 +32,11 @@ public class SkillsList {
 		this.id = id;
 	}
 
-	public List<Skill> getSkillSet() {
-		return skillSet;
-	}
-
-	public void setSkillSet(List<Skill> skillSet) {
-		this.skillSet = skillSet;
-	}
+//	public ArrayList<Skill> getSkillSet() {
+//		return skillSet;
+//	}
+//
+//	public void setSkillSet(ArrayList<Skill> skillSet) {
+//		this.skillSet = skillSet;
+//	}
 }

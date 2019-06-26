@@ -27,15 +27,17 @@
 					</tr>
 				</thead>
 				<tbody id="allSkills">
-					<tr id="skillset" th:each="skill,skillStat: *{skillSet}">
-						<td><input id="skill" type="text" th:field="*{skillSet[__${skillStat.index}__].skill}"></td>
-						<td><input id="yearsExp" type="text" th:field="*{skillSet[__${skillStat.index}__].yearsOfExperience}"></td>
+					<tr id="skillset" th:each="skill, skillStat: *{skills}">
+						<td><input id="skill" type="text" th:field="*{skills[__${skillStat.index}__].skill}"></td>
+						<td><input id="yearsExp" type="text" th:field="*{skills[__${skillStat.index}__].yearsOfExperience}"></td>
 						<td><input id="removeSkill" type="button" name="removeRow" value="Remove Skill"></td>
 					</tr>
 				</tbody>
 			</table>
-			
 		</section>
+		<div id="submit">
+			<input type="submit" value="Submit">
+		</div>
 	</form>
 </body>
 </html>

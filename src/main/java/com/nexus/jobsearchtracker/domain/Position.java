@@ -4,13 +4,16 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Positions")
 public class Position {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	private String positionTitle;
 	private String dateApplied;
 	private String companyName;

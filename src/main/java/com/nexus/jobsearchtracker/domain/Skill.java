@@ -17,7 +17,8 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Embeddable
+@Entity
+@Table(name="skills")
 public class Skill implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -26,9 +27,6 @@ public class Skill implements Serializable{
 	@GeneratedValue
 	private Long id;
 	
-//	@Column(name="applicant_id")
-//	private Long applicantId;
-	
 	private String skill;
 	private String yearsOfExperience;
 	
@@ -36,24 +34,31 @@ public class Skill implements Serializable{
 	@JoinColumn(name = "applicant_id", nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
-	private Applicant application;
+	private Applicant applicant;
 	
 	public Skill() {}
 
-	public Skill(/*Long applicantId,*/ String skill, String yearsOfExperience) {
+	public Skill(String skill, String yearsOfExperience) {
 		super();
-		//this.applicantId = applicantId;
 		this.skill = skill;
 		this.yearsOfExperience = yearsOfExperience;
 	}
 
-//	public Long getApplicantId() {
-//		return applicantId;
-//	}
-//
-//	public void setApplicantId(Long applicantId) {
-//		this.applicantId = applicantId;
-//	}
+	public Applicant getApplicant() {
+		return applicant;
+	}
+
+	public void setApplicant(Applicant applicant) {
+		this.applicant = applicant;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getSkill() {
 		return skill;

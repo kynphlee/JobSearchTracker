@@ -1,5 +1,7 @@
 package com.nexus.jobsearchtracker.controller;
 
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nexus.jobsearchtracker.dao.ApplicantRepository;
 import com.nexus.jobsearchtracker.dao.PositionRepository;
@@ -16,7 +19,6 @@ import com.nexus.jobsearchtracker.dao.SkillsRepository;
 import com.nexus.jobsearchtracker.domain.Applicant;
 import com.nexus.jobsearchtracker.domain.Position;
 import com.nexus.jobsearchtracker.domain.Skill;
-import com.nexus.jobsearchtracker.domain.SkillsList;
 
 @Controller
 public class MainController {
@@ -51,19 +53,14 @@ public class MainController {
 	@PostMapping("/newApplicant")
 	public String addApplicant(
 			@ModelAttribute("newApplicant") Applicant newApplicant,
-			BindingResult result) {
+			BindingResult result, RedirectAttributes redirect) {
 		if (result.hasErrors())
 			System.out.println("An error in submission has occurred.");
 		
-//		List<Skill> skillSet = newApplicant.getSkills();
 		Applicant a = applicantRepository.save(newApplicant);
+		redirect.addFlashAttribute("applicantId", a.getId());
 		log.info(String.format("Applicant \"%s %s\" has been saved.%n", a.getFirstName(), a.getLastName()));
 		
-//		for(Skill skill: skillSet) {
-//			skillRepository.save(skill);
-//			log.info(String.format("Skill \"%s %s\" for applicant \"%s %s\" has been saved.%n"
-//					, skill.getSkill(), a.getFirstName(), a.getLastName()));
-//		}
 		return "redirect:/applicantSkills";
 	}
 	
@@ -84,27 +81,29 @@ public class MainController {
 		Position p = positionRepository.save(newPosition);
 		
 		log.info(String.format("Position \"%s\" has been saved.%n", p.getPositionTitle()));
-//		return "redirect:/";
 		return "redirect:/";
 	}
 	
 	@GetMapping("/applicantSkills")
 	public String newApplicantSkillsForm(Model model) {
-		SkillsList skillsList = new SkillsList();
-		
-		skillsList.getSkillSet().add(new Skill());
-		model.addAttribute("applicantSkills", skillsList);
+
+		long applicantId = (Long) model.asMap().get("applicantId");
+		Optional<Applicant> app = applicantRepository.findById(applicantId);
+		Applicant applicant = app.get();
+		applicant.getSkills().add(new Skill());
+		model.addAttribute("applicantSkills", applicant);
 		return "applicantSkills";
 	}
 	
 	@PostMapping("/applicantSkills")
 	public String addSkillSet(
-			@ModelAttribute("applicantSkills") SkillsList applicantSkills,
+//			@ModelAttribute("applicantSkills") SkillsList applicantSkills,
+			@ModelAttribute("skills") Skill applicantSkill,
 			BindingResult result) {
 		if (result.hasErrors())
 			System.out.println("An error in submission has occurred.");
 		
-		SkillsList s = skillsRepository.save(applicantSkills);
+		Skill s = skillsRepository.save(applicantSkill);
 		
 		return "redirect:/";
 	}

@@ -1,10 +1,16 @@
 package com.nexus.jobsearchtracker.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -34,6 +40,11 @@ public class Applicant {
 	@Embedded
 	private Address address;
 	
+	@OneToMany(cascade = CascadeType.ALL, 
+			fetch = FetchType.LAZY,
+			mappedBy = "applicant")
+	private List<Skill> skills = new ArrayList<Skill>();
+	
 	public Applicant() {}
 
 	public Applicant(@NotNull @Size(max = 40) String firstName, @NotNull @Size(max = 40) String lastName,
@@ -42,6 +53,22 @@ public class Applicant {
 	this.lastName = lastName;
 	this.yearsOfExperience = yearsOfExperience;
 	this.address = address;
+	}
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
