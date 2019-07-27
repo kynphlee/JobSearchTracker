@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Description;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
@@ -43,5 +43,12 @@ public class JobSearchTrackerApplication {
 	    viewResolver.setTemplateEngine(templateEngine());
 	    viewResolver.setOrder(1);
 	    return viewResolver;
+	}
+	
+	@Bean
+	public ResourceBundleMessageSource messageSource() {
+	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+	    messageSource.setBasename("Messages");
+	    return messageSource;
 	}
 }

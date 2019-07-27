@@ -2,8 +2,6 @@ package com.nexus.jobsearchtracker.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,8 +28,8 @@ public class Skill implements Serializable{
 	private String skill;
 	private String yearsOfExperience;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "applicant_id", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "applicant_id", nullable = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	private Applicant applicant;
