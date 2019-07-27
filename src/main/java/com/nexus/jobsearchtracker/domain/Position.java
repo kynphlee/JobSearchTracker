@@ -4,13 +4,16 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Positions")
 public class Position {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
+	
 	private String positionTitle;
 	private String dateApplied;
 	private String companyName;
@@ -26,8 +29,10 @@ public class Position {
 	
 	public Position() {}
 
-	public Position(String positionTitle, String dateApplied, String companyName, String duration, Address address,
-			String responsibilities, String qualifications, String preferredQualifications, String perksBenefits) {
+	public Position(String positionTitle, String dateApplied, 
+			String companyName, String duration, Address address,
+			String responsibilities, String qualifications, 
+			String preferredQualifications, String perksBenefits) {
 		super();
 		this.positionTitle = positionTitle;
 		this.dateApplied = dateApplied;
