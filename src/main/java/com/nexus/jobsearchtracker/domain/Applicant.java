@@ -46,7 +46,9 @@ public class Applicant {
 			mappedBy = "applicant")
 	private List<Skill> skills = new ArrayList<Skill>();
 	
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(cascade = CascadeType.ALL, 
+			fetch = FetchType.LAZY,
+			mappedBy = "applicant")
 	private List<Position> positions = new ArrayList<Position>();
 	
 	public Applicant() {}

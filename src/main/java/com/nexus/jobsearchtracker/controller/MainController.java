@@ -37,6 +37,11 @@ public class MainController {
 	@Autowired
 	private SkillsRepository skillsRepository;
 	
+	@ModelAttribute
+	private List<Applicant> listAllApplicants() {
+		return applicantRepository.findAll();
+	}
+	
 	@GetMapping("/")
 	public String main(Model model) {
 		int count = applicantRepository.findAll().size();

@@ -9,6 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="Positions")
 public class Position {
@@ -32,6 +37,8 @@ public class Position {
 	
 	@ManyToOne
 	@JoinColumn(name = "applicant_id", nullable = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
 	private Applicant applicant;
 
 	public Position() {}
