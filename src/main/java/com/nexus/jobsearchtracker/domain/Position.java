@@ -3,7 +3,10 @@ package com.nexus.jobsearchtracker.domain;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,7 +14,7 @@ import javax.persistence.Table;
 public class Position {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String positionTitle;
@@ -27,6 +30,10 @@ public class Position {
 	private String preferredQualifications;
 	private String perksBenefits;
 	
+	@ManyToOne
+	@JoinColumn(name = "applicant_id", nullable = true)
+	private Applicant applicant;
+
 	public Position() {}
 
 	public Position(String positionTitle, String dateApplied, 

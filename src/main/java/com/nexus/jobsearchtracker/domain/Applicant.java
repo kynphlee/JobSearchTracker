@@ -9,6 +9,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,7 +21,7 @@ import javax.validation.constraints.Size;
 public class Applicant {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
 	
@@ -44,6 +45,9 @@ public class Applicant {
 			fetch = FetchType.LAZY,
 			mappedBy = "applicant")
 	private List<Skill> skills = new ArrayList<Skill>();
+	
+	@OneToMany(mappedBy = "applicant")
+	private List<Position> positions = new ArrayList<Position>();
 	
 	public Applicant() {}
 

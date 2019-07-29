@@ -15,6 +15,21 @@ section > h3 {
 	text-align: center;
 }
 
+#address {
+	position: relative;
+	left: 54px;
+}
+
+#address > div:nth-child(2) {
+	position: relative;
+	left: 53px;
+}
+
+#address > div:nth-child(3) {
+    position: relative;
+    left: 21px;
+}
+
 #submit {
 	margin: auto;
 	width: 5%;

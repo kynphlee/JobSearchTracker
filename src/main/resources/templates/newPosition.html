@@ -8,7 +8,6 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.js"
 		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 		crossorigin="anonymous" type="text/javascript"></script>
-	<script src="js/newApplicant.js" type="text/javascript"></script>
 </head>
 <body>
 	<header>
@@ -21,12 +20,12 @@
 				<div>
 					<label for="title">Position Title</label>
 					<input id="title" type="text" th:field="*{positionTitle}"/>
-					<label for="dateApplied">Date Applied</label>
-					<input id="dateApplied" type="text" th:field="*{dateApplied}"/>
+					<label for="companyName">Company</label>
+					<input id="companyName" type="text" th:field="*{companyName}"/>
 				</div>
 				<div>
-					<label for="companyName">Company Name</label>
-					<input id="companyName" type="text" th:field="*{companyName}"/>
+					<label for="dateApplied">Date Applied</label>
+					<input id="dateApplied" type="text" th:field="*{dateApplied}"/>
 					<label for="duration">Duration</label>
 					<input id="duration" type="text" th:field="*{duration}"/>
 				</div>
