@@ -7,11 +7,12 @@ import com.nexus.jobsearchtracker.dao.PositionRepository;
 import com.nexus.jobsearchtracker.domain.Position;
 
 @Service
-public class PositionServiceImpl {
+public class PositionServiceImpl implements PositionService {
 
 	@Autowired
 	private PositionRepository positionRepository;
 	
+	@Override
 	public Position savePosition(Position p) {
 		return positionRepository.save(p);
 	}

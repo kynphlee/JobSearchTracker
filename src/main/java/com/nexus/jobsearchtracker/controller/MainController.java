@@ -22,29 +22,33 @@ import com.nexus.jobsearchtracker.dao.SkillsRepository;
 import com.nexus.jobsearchtracker.domain.Applicant;
 import com.nexus.jobsearchtracker.domain.Position;
 import com.nexus.jobsearchtracker.domain.Skill;
+import com.nexus.jobsearchtracker.service.ApplicantService;
+import com.nexus.jobsearchtracker.service.PositionService;
+import com.nexus.jobsearchtracker.service.SkillService;
 
 @Controller
 public class MainController {
 	
 	private Logger log = LoggerFactory.getLogger(MainController.class);
 	
+	// Services
 	@Autowired
-	private ApplicantRepository applicantRepository;
+	private ApplicantService applicantService;
 	
 	@Autowired
-	private PositionRepository positionRepository;
+	private SkillService skillService;
 	
 	@Autowired
-	private SkillsRepository skillsRepository;
+	private PositionService positionService;
 	
 	@ModelAttribute
 	private List<Applicant> listAllApplicants() {
-		return applicantRepository.findAll();
+		return applicantService.listAll();
 	}
 	
 	@GetMapping("/")
 	public String main(Model model) {
-		int count = applicantRepository.findAll().size();
+		int count = applicantService.listAll().size();
 		model.addAttribute("applicantCount", count);
 		return "index";
 	}	
@@ -64,7 +68,7 @@ public class MainController {
 		if (result.hasErrors())
 			System.out.println("An error in submission has occurred.");
 		
-		Applicant a = applicantRepository.save(newApplicant);
+		Applicant a = applicantService.save(newApplicant);
 		req.getSession().setAttribute("applicantId", a.getId());
 		req.getSession().setAttribute("applicant", a);
 		log.info(String.format("Applicant \"%s %s\" has been saved.%n", a.getFirstName(), a.getLastName()));
@@ -86,7 +90,7 @@ public class MainController {
 		if (result.hasErrors())
 			System.out.println("An error in submission has occurred.");
 		
-		Position p = positionRepository.save(newPosition);
+		Position p = positionService.savePosition(newPosition);
 		
 		log.info(String.format("Position \"%s\" has been saved.%n", p.getPositionTitle()));
 		return "redirect:/";
@@ -113,11 +117,11 @@ public class MainController {
 	public String addSkillSet(Model model, HttpServletRequest req) {
 		Applicant applicant = (Applicant) req.getSession().getAttribute("applicant");
 		
-		updateSkillList(applicant, req.getParameterMap());
+		skillService.updateSkillList(applicant, req.getParameterMap());
 		
 		List<Skill> applicantSkills = applicant.getSkills();
 		for(Skill skill: applicantSkills) {
-			Skill s = skillsRepository.save(skill);
+			Skill s = skillService.saveSkill(skill);
 			System.out.printf("Added \'%s\' for %s%n", s.getSkill(), applicant.getFirstName());
 		}
 		
@@ -131,7 +135,7 @@ public class MainController {
 		final Long applicantId = Long.valueOf(req.getParameter("addRow"));
 		Applicant applicant = (Applicant) req.getSession().getAttribute("applicant");
 		
-		updateSkillList(applicant, req.getParameterMap());
+		skillService.updateSkillList(applicant, req.getParameterMap());
 
 		Skill s = new Skill();
 		s.setApplicant(applicant);
@@ -154,18 +158,5 @@ public class MainController {
 	    model.addAttribute("applicant", applicant);
 	    model.addAttribute("applicantId", applicant.getId());
 	    return "applicantSkills";
-	}
-	
-	private void updateSkillList(Applicant applicant, Map<String, String[]> reqParams) {
-		reqParams.forEach((key, value) -> {
-			if (key.contains("skills")) {
-				int id = Integer.parseInt(key.substring(7, 8));
-				if (key.contains(".skill"))
-					applicant.getSkills().get(id).setSkill(value[0]);
-				else if (key.contains(".yearsOfExperience")) {
-					applicant.getSkills().get(id).setYearsOfExperience(value[0]);
-				}
-			}
-		});
 	}
 }

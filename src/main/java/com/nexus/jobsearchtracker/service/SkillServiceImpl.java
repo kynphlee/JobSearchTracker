@@ -11,11 +11,12 @@ import com.nexus.jobsearchtracker.domain.Applicant;
 import com.nexus.jobsearchtracker.domain.Skill;
 
 @Service
-public class SkillServiceImpl {
+public class SkillServiceImpl implements SkillService {
 
 	@Autowired
 	private SkillsRepository skillsRepository;
 	
+	@Override
 	public void updateSkillList(Applicant applicant, Map<String, String[]> reqParams) {
 		reqParams.forEach((key, value) -> {
 			if (key.contains("skills")) {
@@ -29,10 +30,12 @@ public class SkillServiceImpl {
 		});
 	}
 	
+	@Override
 	public Skill saveSkill(Skill s) {
 		return skillsRepository.save(s);
 	}
 	
+	@Override
 	public List<Skill> saveAllSkills(Iterable<Skill> entities) {
 		return skillsRepository.saveAll(entities);
 	}
