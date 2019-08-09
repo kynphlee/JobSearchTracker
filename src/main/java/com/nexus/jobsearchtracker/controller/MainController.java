@@ -1,7 +1,6 @@
 package com.nexus.jobsearchtracker.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,9 +15,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.nexus.jobsearchtracker.dao.ApplicantRepository;
-import com.nexus.jobsearchtracker.dao.PositionRepository;
-import com.nexus.jobsearchtracker.dao.SkillsRepository;
 import com.nexus.jobsearchtracker.domain.Applicant;
 import com.nexus.jobsearchtracker.domain.Position;
 import com.nexus.jobsearchtracker.domain.Skill;
