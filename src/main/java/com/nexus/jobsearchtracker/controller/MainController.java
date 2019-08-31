@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +22,6 @@ import com.nexus.jobsearchtracker.service.SkillService;
 
 @Controller
 public class MainController {
-	
-	private Logger log = LoggerFactory.getLogger(MainController.class);
 	
 	// Services
 	@Autowired
@@ -69,7 +65,6 @@ public class MainController {
 		Applicant a = applicantService.save(newApplicant);
 		req.getSession().setAttribute("applicantId", a.getId());
 		req.getSession().setAttribute("applicant", a);
-		log.info(String.format("Applicant \"%s %s\" has been saved.%n", a.getFirstName(), a.getLastName()));
 		
 		return "redirect:/applicantSkills";
 	}
@@ -88,9 +83,7 @@ public class MainController {
 		if (result.hasErrors())
 			System.out.println("An error in submission has occurred.");
 		
-		Position p = positionService.savePosition(newPosition);
-		
-		log.info(String.format("Position \"%s\" has been saved.%n", p.getPositionTitle()));
+		positionService.savePosition(newPosition);
 		return "redirect:/";
 	}
 	
@@ -119,8 +112,7 @@ public class MainController {
 		
 		List<Skill> applicantSkills = applicant.getSkills();
 		for(Skill skill: applicantSkills) {
-			Skill s = skillService.saveSkill(skill);
-			System.out.printf("Added \'%s\' for %s%n", s.getSkill(), applicant.getFirstName());
+			skillService.saveSkill(skill);
 		}
 		
 		return "redirect:/";
