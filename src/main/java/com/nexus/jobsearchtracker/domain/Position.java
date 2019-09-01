@@ -1,12 +1,15 @@
 package com.nexus.jobsearchtracker.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
@@ -30,33 +33,29 @@ public class Position {
 	@Embedded
 	private Address address;
 	
-	private String responsibilities;
-	private String qualifications;
-	private String preferredQualifications;
-	private String perksBenefits;
-	
 	@ManyToOne
 	@JoinColumn(name = "applicant_id", nullable = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnore
 	private Applicant applicant;
+	
+	@OneToOne(mappedBy = "position", cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "positionDetails_id", nullable = false)
+	private PositionDetails positionDetails;
 
 	public Position() {}
 
 	public Position(String positionTitle, String dateApplied, 
 			String companyName, String duration, Address address,
-			String responsibilities, String qualifications, 
-			String preferredQualifications, String perksBenefits) {
+			PositionDetails positionDetails) {
 		super();
 		this.positionTitle = positionTitle;
 		this.dateApplied = dateApplied;
 		this.companyName = companyName;
 		this.duration = duration;
 		this.address = address;
-		this.responsibilities = responsibilities;
-		this.qualifications = qualifications;
-		this.preferredQualifications = preferredQualifications;
-		this.perksBenefits = perksBenefits;
+		this.positionDetails = positionDetails;
 	}
 
 	public Long getId() {
@@ -107,35 +106,26 @@ public class Position {
 		this.address = address;
 	}
 
-	public String getResponsibilities() {
-		return responsibilities;
+	public PositionDetails getPositionDetails() {
+		return positionDetails;
 	}
 
-	public void setResponsibilities(String responsibilities) {
-		this.responsibilities = responsibilities;
+	public void setPositionDetails(PositionDetails positionDetails) {
+		if (positionDetails == null) {
+			if (this.positionDetails != null) {
+				this.positionDetails.setPosition(null);
+			}
+		} else {
+			positionDetails.setPosition(this);
+		}
+		this.positionDetails = positionDetails;
 	}
 
-	public String getQualifications() {
-		return qualifications;
+	public Applicant getApplicant() {
+		return applicant;
 	}
 
-	public void setQualifications(String qualifications) {
-		this.qualifications = qualifications;
-	}
-
-	public String getPreferredQualifications() {
-		return preferredQualifications;
-	}
-
-	public void setPreferredQualifications(String preferredQualifications) {
-		this.preferredQualifications = preferredQualifications;
-	}
-
-	public String getPerksBenefits() {
-		return perksBenefits;
-	}
-
-	public void setPerksBenefits(String perksBenefits) {
-		this.perksBenefits = perksBenefits;
+	public void setApplicant(Applicant applicant) {
+		this.applicant = applicant;
 	}
 }
