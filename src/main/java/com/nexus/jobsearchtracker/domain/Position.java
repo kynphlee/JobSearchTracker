@@ -34,18 +34,6 @@ public class Position {
 	@Embedded
 	private Address address;
 	
-	@Lob
-	private String responsibilities;
-	
-	@Lob
-	private String qualifications;
-	
-	@Lob
-	private String preferredQualifications;
-	
-	@Lob
-	private String perksBenefits;
-	
 	@ManyToOne
 	@JoinColumn(name = "applicant_id", nullable = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
