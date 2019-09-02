@@ -5,9 +5,9 @@ import java.util.List;
 import com.nexus.jobsearchtracker.domain.Position;
 
 public interface PositionService {
-	
-	List<Position> listAll();
 
+	List<Position> listAll();
+	
 	Position savePosition(Position p);
 
 }
