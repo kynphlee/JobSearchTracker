@@ -17,31 +17,50 @@
 	<form action="#" th:action="@{/newPosition}" th:object="${newPosition}" th:method="POST">
 		<div id="position">
 			<section id="info" class="positionInfo">
-				<div>
-					<label for="title">Position Title</label>
-					<input id="title" type="text" th:field="*{positionTitle}"/>
-					<label for="companyName">Company</label>
-					<input id="companyName" type="text" th:field="*{companyName}"/>
+				<div id="position-details">
+					<span id="position-span">
+						<label for="title">Position Title</label>
+						<input id="title" type="text" th:field="*{positionTitle}"/>
+					</span>
+					<span id="company-span">
+						<label for="companyName">Company</label>
+						<input id="companyName" type="text" th:field="*{companyName}"/>
+					</span>
+					<span id="dateApplied-span">
+						<label for="dateApplied">Date Applied</label>
+						<input id="dateApplied" type="text" th:field="*{dateApplied}"/>
+					</span>
+					<span id="duration-span">
+						<label for="duration">Duration</label>
+						<input id="duration" type="text" th:field="*{duration}"/>
+					</span>
+					<span id="applicant-span">
+						<label for="applicant">Applicant</label>
+						<select id="applicant" th:field="*{applicant}">
+							<option th:each="app : ${applicantList}"
+									th:value="${app.id}"
+									th:text="${app.firstName + ' ' + app.lastName}">Applicant Name</option>
+						</select>
+					</span>
 				</div>
-				<div>
-					<label for="dateApplied">Date Applied</label>
-					<input id="dateApplied" type="text" th:field="*{dateApplied}"/>
-					<label for="duration">Duration</label>
-					<input id="duration" type="text" th:field="*{duration}"/>
-				</div>
+				
 				<div id="address">
-					<div>
+					<span id="address-1-span">
 						<label for="address1">Street</label>
 						<input id="address1" type="text" th:field="*{address.address1}"/>
+					</span>
+					<span id="city-span">
 						<label for="city">City</label>
 						<input id="city" type="text" th:field="*{address.city}"/>
-					</div>
-					<div>
+					</span>
+					<span id="address-2-span">
 						<input id="address2" type="text" th:field="*{address.address2}"/>
+					</span>
+					<span id="state-span">
 						<label for="state">State</label>
 						<input id="state" type="text" th:field="*{address.state}"/>
-					</div>
-					<div id="zip">
+					</span>
+					<div id="zip-div">
 						<label for="zipcode">Zip</label>
 						<input id="zipcode" type="text" th:field="*{address.zip}"/>
 					</div>

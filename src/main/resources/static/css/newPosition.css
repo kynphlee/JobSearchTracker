@@ -4,6 +4,7 @@
 	background-color: #fcaf3e;
 	margin: auto;
 	width: 50%;
+	padding: 44px 44px;
 }
 
 .positionSection {
@@ -15,17 +16,53 @@ section > h3 {
 	text-align: center;
 }
 
-#address {
+#position-details {
 	position: relative;
-	left: 54px;
+	top: -17px;
 }
 
-#address > div:nth-child(2) {
+#address {
+	position: relative;
+	left: 56px;
+	top: 19px;
+}
+
+#city-span {
+	position: relative;
+	left: 45px;
+}
+
+#company-span {
+	position: relative;
+	left: 1px;
+}
+
+#duration-span {
+	position: relative;
+	left: 8px;
+}
+
+#applicant-span {
+	position: relative;
+	left: 27px;
+}
+
+#address-1-span {
+	position: relative;
+	left: 1px;
+}
+
+#address-2-span {
 	position: relative;
 	left: 53px;
 }
 
-#address > div:nth-child(3) {
+#state-span {
+    position: relative;
+    left: 90px;
+}
+
+#zip-div {
     position: relative;
     left: 21px;
 }

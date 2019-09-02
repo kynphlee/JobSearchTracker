@@ -44,8 +44,11 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String main(Model model) {
-		int count = applicantService.listAll().size();
-		model.addAttribute("applicantCount", count);
+		int applicantCount = applicantService.listAll().size();
+		int positionCount = positionService.listAll().size();
+		
+		model.addAttribute("applicantCount", applicantCount);
+		model.addAttribute("positionCount", positionCount);
 		return "index";
 	}	
 	
@@ -75,6 +78,9 @@ public class MainController {
 	@GetMapping("/newPosition")
 	public String newPosition(Model model) {
 		Position position = new Position();
+		List<Applicant> applicants = applicantService.listAll();
+		
+		model.addAttribute("applicantList", applicants);
 		model.addAttribute("newPosition", position);
 		return "newPosition";
 	}
