@@ -2,7 +2,8 @@ HELP.md
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 nohup.out
-
+/logs/
+.attach_*
 
 ### STS ###
 .apt_generated
