@@ -7,14 +7,3 @@ header {
 body {
 	background-color: #dee2ad;	
 }
-
-a:link, a:visited {
-	font-family: sans-serif;
-	font-weight: bold;
-	background-color: #ef2929;
-	color: white;
-	padding: 14px 24px;
-	text-align: center;
-    text-decoration: none;
-    display: inline-block;
-}

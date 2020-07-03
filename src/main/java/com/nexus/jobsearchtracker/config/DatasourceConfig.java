@@ -12,10 +12,11 @@ public class DatasourceConfig {
 	@Bean
 	public DataSource getDatasource() {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-		dataSourceBuilder.driverClassName("org.h2.Driver");
-		dataSourceBuilder.url("jdbc:h2:mem:testdb");
-		dataSourceBuilder.username("sa");
-		dataSourceBuilder.password("");
+		dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
+		dataSourceBuilder.url("jdbc:mysql://localhost:3306/jobsearchtracker?useJDBCCompliantTimezoneShift=true&" +
+                "useLegacyDatetimeCode=false&serverTimezone=UTC");
+		dataSourceBuilder.username("root");
+		dataSourceBuilder.password("p9goebXG7549");
 		return dataSourceBuilder.build();
 	}
 }

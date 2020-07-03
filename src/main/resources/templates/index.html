@@ -3,39 +3,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Job Search Tracker v1</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/index.css">
 </head>
-<body>
-	<header>
-		<h1>Job Search Tracker</h1>
-	</header>
+	<body>
+		<header>
+			<h1>Job Search Tracker</h1>
+		</header>
 
-	<section id="lastActivity">
-		<h2>Last Activity</h2>
-		<div>
-			<span id="lastPosition">Position Title</span> <span id="sep">-</span>
-			<span id="lastCompany">Company Name</span>
-		</div>
-		<div>
-			<span id="timestamp">Timestamp</span>
-		</div>
-	</section>
+		<section id="lastActivity">
+			<h2>Last Activity</h2>
+			<div>
+				<span id="lastPosition">Position Title</span> <span id="sep">-</span>
+				<span id="lastCompany">Company Name</span>
+			</div>
+			<div>
+				<span id="timestamp">Timestamp</span>
+			</div>
+		</section>
 
-	<section id="applicants">
-		<h3>Applicants: <span id="totalApplicants" th:text="${applicantCount}">0</span></h3>
-		<div>
-			<span><a href="/newApplicant">New Applicant</a></span> 
-			<span><a href="#">All Applicants</a></span>
-		</div>
-	</section>
+		<section id="applicants">
+			<h3>Applicants: <span id="totalApplicants" th:text="${applicantCount}">0</span></h3>
+			<div>
+				<span><a href="/applicant/new">New Applicant</a></span>
+				<span><a href="#">All Applicants</a></span>
+			</div>
+		</section>
 
-	<section id="positions">
-		<h3>Positions: <span id="totalPositions" th:text="${positionCount}">0</span></h3>
-		<div>
-			<span><a href="/newPosition">New Position</a></span> 
-			<span><a href="#">All Positions</a></span>
-		</div>
-	</section>
-</body>
+		<section id="positions">
+			<h3>Positions: <span id="totalPositions" th:text="${positionCount}">0</span></h3>
+			<div>
+				<span><a href="/position/new">New Position</a></span>
+				<span><a href="#">All Positions</a></span>
+			</div>
+		</section>
+	</body>
 </html>

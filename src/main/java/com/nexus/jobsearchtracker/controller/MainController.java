@@ -21,6 +21,7 @@ import com.nexus.jobsearchtracker.service.PositionService;
 import com.nexus.jobsearchtracker.service.SkillService;
 
 @Controller
+@RequestMapping("/")
 public class MainController {
 	
 	// Services
@@ -38,7 +39,7 @@ public class MainController {
 		return applicantService.listAll();
 	}
 	
-	@GetMapping("/")
+	@GetMapping
 	public String main(Model model) {
 		
 		int applicantCount = applicantService.listAll().size();
@@ -47,46 +48,6 @@ public class MainController {
 		model.addAttribute("applicantCount", applicantCount);
 		model.addAttribute("positionCount", positionCount);
 		return "index";
-	}	
-	
-	@GetMapping("/newApplicant")
-	public String newApplicantForm(Model model) {
-		Applicant applicant = new Applicant();
-		
-		model.addAttribute("applicant", applicant);
-		return "newApplicant";
-	}
-
-	@PostMapping("/newApplicant")
-	public String addApplicant(
-			@ModelAttribute("applicant") Applicant newApplicant,
-			BindingResult result, HttpServletRequest req) {
-		if (result.hasErrors())
-			System.out.println("An error in submission has occurred.");
-		
-		Applicant a = applicantService.save(newApplicant);
-		req.getSession().setAttribute("applicantId", a.getId());
-		req.getSession().setAttribute("applicant", a);
-		
-		return "redirect:/applicantSkills";
-	}
-	
-	@GetMapping("/newPosition")
-	public String newPosition(Model model) {
-		Position position = new Position();
-		model.addAttribute("newPosition", position);
-		return "newPosition";
-	}
-	
-	@PostMapping("/newPosition")
-	public String addPosition(
-			@ModelAttribute("newPosition") Position newPosition,
-			BindingResult result) {
-		if (result.hasErrors())
-			System.out.println("An error in submission has occurred.");
-		
-		positionService.savePosition(newPosition);
-		return "redirect:/";
 	}
 	
 	@GetMapping("/applicantSkills")

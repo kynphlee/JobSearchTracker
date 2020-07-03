@@ -1,51 +1,20 @@
 @charset "UTF-8";
-#applicantInfo {
-	margin: auto;
-	width: 50%;
-}
-
 .applicant-section {
-	background-color: #fcaf3e;
+    margin: auto;
+    width: 25%;
 }
 
-#zip {
-	position: relative;
-/* 	top: 22px; */
-	left: 22px;
+input[type="text"] {
+    width: 100%;
+    margin-bottom: 5px;
 }
 
-
-#address {
-	position: relative;
-/* 	top: 20px; */
-	left: 41px;;
+input[type="number"] {
+    width: 100%;
+    margin-bottom: 5px;
 }
 
-
-div#lastName {
-	position: relative;
-	left: 3px;
-}
-
-#applicantSkills {
-	margin: auto;
-	width: 35%;
-	position: relative;
-	top: 60px;
-}
-
-#applicantSkills h2{
-	text-align: center;
-}
-
-#submit {
-	margin: auto;
-	width: 5%;
-	position: relative;
-	top: 80px;
-}
-
-#address2 {
-	position: relative;
-	left: 54px;
+input[type="submit"] {
+    display: block;
+    margin: auto;
 }

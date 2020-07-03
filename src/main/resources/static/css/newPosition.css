@@ -1,10 +1,38 @@
 @charset "UTF-8";
 
-#info {
-	background-color: #fcaf3e;
-	margin: auto;
-	width: 50%;
-	padding: 44px 44px;
+div#positionInfo {
+    margin-left: 390px;
+    width: 25%;
+    display: inline-block;
+}
+
+div#address {
+    margin-left: 70px;
+    width: 25%;
+    display: inline-block;
+}
+
+select#applicant {
+    width: 100%;
+}
+
+#position-details .positionSection textarea {
+    width: 100%;
+    height: 200px
+}
+
+div#positionInfo input[type="text"] {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+div#address input[type="text"] {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+section > h3 {
+	text-align: center;
 }
 
 .positionSection {
@@ -12,64 +40,7 @@
 	width: 50%;
 }
 
-section > h3 {
-	text-align: center;
-}
-
-#position-details {
-	position: relative;
-	top: -17px;
-}
-
-#address {
-	position: relative;
-	left: 56px;
-	top: 19px;
-}
-
-#city-span {
-	position: relative;
-	left: 45px;
-}
-
-#company-span {
-	position: relative;
-	left: 1px;
-}
-
-#duration-span {
-	position: relative;
-	left: 8px;
-}
-
-#applicant-span {
-	position: relative;
-	left: 27px;
-}
-
-#address-1-span {
-	position: relative;
-	left: 1px;
-}
-
-#address-2-span {
-	position: relative;
-	left: 53px;
-}
-
-#state-span {
-    position: relative;
-    left: 90px;
-}
-
-#zip-div {
-    position: relative;
-    left: 21px;
-}
-
-#submit {
-	margin: auto;
-	width: 5%;
-	position: relative;
-	top: 30px;
+input[type="submit"] {
+    display: block;
+    margin: auto;
 }

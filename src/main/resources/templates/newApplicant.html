@@ -3,55 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Job Search Tracker v1</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/newApplicant.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/newApplicant.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.js"
 			integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 			crossorigin="anonymous" type="text/javascript"></script>
-	<script src="js/newApplicant.js" type="text/javascript"></script>
 </head>
 <body>
 	<header>
 		<h1>New Applicant</h1>
 	</header>
 
-	<form action="#" th:action="@{/newApplicant}" th:object="${applicant}" th:method="POST">
+	<form action="#" th:action="@{/applicant/add}" th:object="${applicant}" th:method="POST">
 		<section id="applicantInfo" class="applicant-section">
-			<div id="firstNameAndExperience">
-				<label for="firstName">First Name</label>
-				<input id="firstName" type="text" th:field="*{firstName}">
-				<label for="experience">Years of Experience</label>
-				<input id="experience" type="number" th:field="*{yearsOfExperience}">
-			</div>
-			<div id="lastName">
-				<label for="lastName">Last Name</label>
-				<input id="lastName" type="text" th:field="*{lastName}">
-			</div>
-			
+			<label for="firstName">First Name</label>
+			<input id="firstName" type="text" th:field="*{firstName}">
+			<label for="lastName">Last Name</label>
+			<input id="lastName" type="text" th:field="*{lastName}">
+			<label for="experience">Experience</label>
+			<input id="experience" type="number" th:field="*{yearsOfExperience}">
 			<div id="address">
-				<div>
-					<label for="address1">Street</label>
+				<div id="street">
+					<label for="address1">Address</label>
 					<input id="address1" type="text" th:field="*{address.address1}">
-					<label for="city">City</label>
-					<input id="city" type="text" th:field="*{address.city}">
-				</div>
-				<div>
 					<label for="address2"></label>
 					<input id="address2" type="text" th:field="*{address.address2}">
-					<span style="position: relative; left: 50px;"> 
-						<label for="state">State</label>
-						<input id="state" type="text" th:field="*{address.state}">
-					</span> 
 				</div>
-				<div id="zip">
-					<label for="zipcode">Zip</label>
-					<input id="zipcode" type="text" th:field="*{address.zip}">
-				</div>
+				<label for="city">City</label>
+				<input id="city" type="text" th:field="*{address.city}">
+				<label for="state">State</label>
+				<input id="state" type="text" th:field="*{address.state}">
+				<label for="zipcode">Zip</label>
+				<input id="zipcode" type="text" th:field="*{address.zip}">
+			</div>
+			<div id="submit">
+				<input type="submit" value="Submit">
 			</div>
 		</section>
-		<div id="submit">
-			<input type="submit" value="Submit">
-		</div>
 	</form>
 </body>
 </html>

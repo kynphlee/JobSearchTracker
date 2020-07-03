@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Job Search Tracker v1</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/newPosition.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/newPosition.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.js"
 		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 		crossorigin="anonymous" type="text/javascript"></script>
@@ -16,73 +16,56 @@
 	
 	<form action="#" th:action="@{/newPosition}" th:object="${newPosition}" th:method="POST">
 		<div id="position">
-			<section id="info" class="positionInfo">
-				<div id="position-details">
-					<span id="position-span">
-						<label for="title">Position Title</label>
-						<input id="title" type="text" th:field="*{positionTitle}"/>
-					</span>
-					<span id="company-span">
-						<label for="companyName">Company</label>
-						<input id="companyName" type="text" th:field="*{companyName}"/>
-					</span>
-					<span id="dateApplied-span">
-						<label for="dateApplied">Date Applied</label>
-						<input id="dateApplied" type="text" th:field="*{dateApplied}"/>
-					</span>
-					<span id="duration-span">
-						<label for="duration">Duration</label>
-						<input id="duration" type="text" th:field="*{duration}"/>
-					</span>
-					<span id="applicant-span">
-						<label for="applicant">Applicant</label>
-						<select id="applicant" th:field="*{applicant}">
-							<option th:each="app : ${applicantList}"
-									th:value="${app.id}"
-									th:text="${app.firstName + ' ' + app.lastName}">Applicant Name</option>
-						</select>
-					</span>
+			<section id="info">
+				<div id="positionInfo">
+					<label for="title">Position Title</label>
+					<input id="title" type="text" th:field="*{positionTitle}"/>
+					<label for="companyName">Company</label>
+					<input id="companyName" type="text" th:field="*{companyName}"/>
+					<label for="dateApplied">Date Applied</label>
+					<input id="dateApplied" type="text" th:field="*{dateApplied}"/>
+					<label for="duration">Duration</label>
+					<input id="duration" type="text" th:field="*{duration}"/>
+					<label for="applicant">Applicant</label>
+					<select id="applicant" th:field="*{applicant}">
+						<option th:each="app : ${applicantList}"
+								th:value="${app.id}"
+								th:text="${app.firstName + ' ' + app.lastName}">Applicant Name</option>
+					</select>
 				</div>
-				
 				<div id="address">
-					<span id="address-1-span">
-						<label for="address1">Street</label>
-						<input id="address1" type="text" th:field="*{address.address1}"/>
-					</span>
-					<span id="city-span">
-						<label for="city">City</label>
-						<input id="city" type="text" th:field="*{address.city}"/>
-					</span>
-					<span id="address-2-span">
-						<input id="address2" type="text" th:field="*{address.address2}"/>
-					</span>
-					<span id="state-span">
-						<label for="state">State</label>
-						<input id="state" type="text" th:field="*{address.state}"/>
-					</span>
-					<div id="zip-div">
-						<label for="zipcode">Zip</label>
-						<input id="zipcode" type="text" th:field="*{address.zip}"/>
-					</div>
+					<label for="address1">Address 1</label>
+					<input id="address1" type="text" th:field="*{address.address1}"/>
+					<label for="address2">Address 2</label>
+					<input id="address2" type="text" th:field="*{address.address2}"/>
+					<label for="city">City</label>
+					<input id="city" type="text" th:field="*{address.city}"/>
+					<label for="state">State</label>
+					<input id="state" type="text" th:field="*{address.state}"/>
+					<label for="zipcode">Zip</label>
+					<input id="zipcode" type="text" th:field="*{address.zip}"/>
 				</div>
 			</section>
-			
-			<section id="responsibilities" class="positionSection">
-				<h3>Responsibilities</h3>
-				<textarea rows="6" cols="103" th:field="*{positionDetails.responsibilities}"></textarea>
-			</section>
-			<section id="qualifications" class="positionSection">
-				<h3>Qualifications</h3>
-				<textarea rows="6" cols="103" th:field="*{positionDetails.qualifications}"></textarea>
-			</section>
-			<section id="preferred" class="positionSection">
-				<h3>Preferred Qualifications</h3>
-				<textarea rows="6" cols="103" th:field="*{positionDetails.preferredQualifications}"></textarea>
-			</section>
-			<section id="perksBenefits" class="positionSection">
-				<h3>Perks & Benefits</h3>
-				<textarea rows="6" cols="103" th:field="*{positionDetails.perksBenefits}"></textarea>
-			</section>
+
+			<div id="position-details">
+				<section id="responsibilities" class="positionSection">
+					<h3>Responsibilities</h3>
+					<textarea rows="6" cols="103" th:field="*{positionDetails.responsibilities}"></textarea>
+				</section>
+				<section id="qualifications" class="positionSection">
+					<h3>Qualifications</h3>
+					<textarea rows="6" cols="103" th:field="*{positionDetails.qualifications}"></textarea>
+				</section>
+				<section id="preferred" class="positionSection">
+					<h3>Preferred Qualifications</h3>
+					<textarea rows="6" cols="103" th:field="*{positionDetails.preferredQualifications}"></textarea>
+				</section>
+				<section id="perksBenefits" class="positionSection">
+					<h3>Perks & Benefits</h3>
+					<textarea rows="6" cols="103" th:field="*{positionDetails.perksBenefits}"></textarea>
+				</section>
+			</div>
+
 		</div>
 		<div id="submit">
 			<input type="submit" value="Submit"/>
