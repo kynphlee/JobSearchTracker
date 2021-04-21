@@ -17,12 +17,13 @@ import com.nexus.jobsearchtracker.domain.Applicant;
 public class ApplicantServiceImpl implements ApplicantService {
 
 	private TransactionTemplate txTemplate;
-	
-	@Autowired
+
 	private ApplicantRepository applicantRepository;
-	
-	public ApplicantServiceImpl(PlatformTransactionManager platformTransactionManager) {
+
+	@Autowired
+	public ApplicantServiceImpl(PlatformTransactionManager platformTransactionManager, ApplicantRepository applicantRepository) {
 		this.txTemplate = new TransactionTemplate(platformTransactionManager);
+		this.applicantRepository = applicantRepository;
 	}
 	
 	@Override

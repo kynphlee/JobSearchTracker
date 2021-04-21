@@ -17,8 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/applicant")
 public class ApplicantController {
 
-    @Autowired
     private ApplicantService applicantService;
+
+    @Autowired
+    public ApplicantController(ApplicantService applicantService) {
+        this.applicantService = applicantService;
+    }
 
     @GetMapping("/new")
     public String newApplicantForm(Model model) {
@@ -29,8 +33,7 @@ public class ApplicantController {
     }
 
     @PostMapping("/add")
-    public String addApplicant(
-            @ModelAttribute("applicant") Applicant newApplicant,
+    public String addApplicant(@ModelAttribute("applicant") Applicant newApplicant,
             BindingResult result, HttpServletRequest req) {
         if (result.hasErrors())
             System.out.println("An error in submission has occurred.");
@@ -39,6 +42,6 @@ public class ApplicantController {
         req.getSession().setAttribute("applicantId", a.getId());
         req.getSession().setAttribute("applicant", a);
 
-        return "redirect:/applicantSkills";
+        return "redirect:/skills/new";
     }
 }

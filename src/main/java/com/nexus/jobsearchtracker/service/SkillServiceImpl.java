@@ -18,12 +18,13 @@ import com.nexus.jobsearchtracker.domain.Skill;
 public class SkillServiceImpl implements SkillService {
 
 	private TransactionTemplate txTemplate;
-	
-	@Autowired
+
 	private SkillsRepository skillsRepository;
-	
-	public SkillServiceImpl(PlatformTransactionManager platformTransactionManager) {
+
+	@Autowired
+	public SkillServiceImpl(PlatformTransactionManager platformTransactionManager, SkillsRepository skillsRepository) {
 		this.txTemplate = new TransactionTemplate(platformTransactionManager);
+		this.skillsRepository = skillsRepository;
 	}
 	
 	@Override
@@ -42,14 +43,7 @@ public class SkillServiceImpl implements SkillService {
 	
 	@Override
 	public Skill saveSkill(Skill s) {
-		return txTemplate.execute(new TransactionCallback<Skill>() {
-
-			@Override
-			public Skill doInTransaction(TransactionStatus status) {
-				return skillsRepository.save(s);
-			}
-			
-		});
+		return txTemplate.execute((status) -> skillsRepository.save(s));
 	}
 	
 	@Override

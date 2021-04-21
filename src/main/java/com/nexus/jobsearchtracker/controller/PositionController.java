@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/position")
 public class PositionController {
 
-    @Autowired
     private PositionService positionService;
+
+    @Autowired
+    public PositionController(PositionService positionService) {
+        this.positionService = positionService;
+    }
 
     @GetMapping("/new")
     public String newPosition(Model model) {

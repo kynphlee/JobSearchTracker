@@ -13,9 +13,9 @@ public class DatasourceConfig {
 	public DataSource getDatasource() {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 		dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
-		dataSourceBuilder.url("jdbc:mysql://localhost:3306/jobsearchtracker?useJDBCCompliantTimezoneShift=true&" +
+		dataSourceBuilder.url("jdbc:mysql://db:3306/jobsearchtracker?useJDBCCompliantTimezoneShift=true&" +
                 "useLegacyDatetimeCode=false&serverTimezone=UTC");
-		dataSourceBuilder.username("root");
+		dataSourceBuilder.username("user");
 		dataSourceBuilder.password("p9goebXG7549");
 		return dataSourceBuilder.build();
 	}

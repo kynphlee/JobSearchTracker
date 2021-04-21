@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  web:
+    image: kynphlee/jobsearchtracker
+    container_name: web
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  db:
+    image: mysql/mysql-server
+    container_name: db
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "p9goebXG7549"
+      MYSQL_DATABASE: "jobsearchtracker"
+      MYSQL_ROOT_PASSWORD: "p9goebXG7549"

@@ -18,11 +18,12 @@ public class PositionServiceImpl implements PositionService {
 	
 	private TransactionTemplate txTemplate;
 
-	@Autowired
 	private PositionRepository positionRepository;
-	
-	public PositionServiceImpl(PlatformTransactionManager platformTransactionManager) {
+
+	@Autowired
+	public PositionServiceImpl(PlatformTransactionManager platformTransactionManager, PositionRepository positionRepository) {
 		this.txTemplate = new TransactionTemplate(platformTransactionManager);
+		this.positionRepository = positionRepository;
 	}
 	
 	@Override

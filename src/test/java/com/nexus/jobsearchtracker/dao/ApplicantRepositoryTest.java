@@ -1,9 +1,7 @@
-package com.nexus.jobsearchtracker;
+package com.nexus.jobsearchtracker.dao;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.List;
-
+import com.nexus.jobsearchtracker.domain.Address;
+import com.nexus.jobsearchtracker.domain.Applicant;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.nexus.jobsearchtracker.dao.ApplicantRepository;
-import com.nexus.jobsearchtracker.domain.Address;
-import com.nexus.jobsearchtracker.domain.Applicant;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -21,9 +19,10 @@ public class ApplicantRepositoryTest {
 
 	@Autowired
 	private ApplicantRepository applicantRepository;
-	static Address testAddress;
-	static Applicant testApplicant;
-	
+
+	private Address testAddress;
+	private Applicant testApplicant;
+
 	@Before
 	public void init() {
 		testAddress = new Address();

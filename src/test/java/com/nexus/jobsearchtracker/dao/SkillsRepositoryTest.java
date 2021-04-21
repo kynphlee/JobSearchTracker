@@ -1,4 +1,4 @@
-package com.nexus.jobsearchtracker;
+package com.nexus.jobsearchtracker.dao;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,9 +26,9 @@ public class SkillsRepositoryTest {
 	
 	@Autowired
 	private SkillsRepository skillsRepository;
-	
-	static Address testAddress;
-	static Applicant testApplicant;
+
+	private Address testAddress;
+	private Applicant testApplicant;
 	
 	@Before
 	public void init() {
